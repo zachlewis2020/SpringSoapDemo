@@ -1,0 +1,2 @@
+
+ curl -fsSL --header "content-type: text/xml"  -d @requests.xml http://localhost:8080/ws 
