@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="demosoap" targetNamespace="demosoap" elementFormDefault="qualified">
+    <!-- XML Schema Generated from XML Document on Thu Jun 25 2020 13:38:43 GMT-0500 (Central Daylight Time) -->
+    <!-- with XmlGrid.net Free Online Service http://xmlgrid.net -->
+
+    <xs:element name="request">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="data" type="xs:string"></xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="response">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="data" type="xs:string"></xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+</xs:schema>
+

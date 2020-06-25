@@ -1,8 +1,9 @@
-<?xml version="1.0"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/">
-    <SOAP-ENV:Header></SOAP-ENV:Header>
+    <SOAP-ENV:Header/>
     <SOAP-ENV:Body>
-        <ns2:GetStudentDetailsRequest  xmlns:ns2="students">
-        </ns2:GetStudentDetailsRequest>
+        <ns2:request xmlns:ns2="demosoap">
+         <ns2:data>More Stuff</ns2:data>
+        </ns2:request>
     </SOAP-ENV:Body>
 </SOAP-ENV:Envelope>

@@ -78,7 +78,7 @@
 				</executions>
 				<configuration>
 					<sources>
-						<source>${project.basedir}/src/main/resources/student.xsd</source>
+						<source>${project.basedir}/src/main/resources/SampleSoapModel.xsd</source>
 					</sources>
 				</configuration>
 			</plugin>

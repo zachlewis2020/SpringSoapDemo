@@ -9,10 +9,27 @@ import org.springframework.ws.transport.http.MessageDispatcherServlet;
 import org.springframework.ws.wsdl.wsdl11.DefaultWsdl11Definition;
 import org.springframework.xml.xsd.SimpleXsdSchema;
 import org.springframework.xml.xsd.XsdSchema;
+import org.springframework.ws.soap.server.endpoint.SoapFaultDefinition;
+import org.springframework.ws.soap.server.endpoint.SoapFaultMappingExceptionResolver;
 
 @EnableWs
 @Configuration
 public class WebServiceConfig {
+
+    @Bean
+    public XsdSchema myDataSchema() {
+        return new SimpleXsdSchema(new ClassPathResource("SampleSoapModel.xsd"));
+    }
+
+    @Bean(name = "demoSoap")
+    public DefaultWsdl11Definition defaultWsdl11Definition(XsdSchema myDataSchema) {
+        DefaultWsdl11Definition definition = new DefaultWsdl11Definition();
+        definition.setPortTypeName("MyDataPort");
+        definition.setTargetNamespace("demosoap");
+        definition.setLocationUri("/ws");
+        definition.setSchema(myDataSchema);
+        return definition;
+    }
 
     @Bean
     public ServletRegistrationBean messageDispatcherServlet(ApplicationContext context) {
@@ -22,18 +39,12 @@ public class WebServiceConfig {
         return new ServletRegistrationBean(messageDispatcherServlet, "/ws/*");
     }
 
-    @Bean(name = "students")
-    public DefaultWsdl11Definition defaultWsdl11Definition(XsdSchema studentsSchema) {
-        DefaultWsdl11Definition definition = new DefaultWsdl11Definition();
-        definition.setPortTypeName("StudentPort");
-        definition.setTargetNamespace("students");
-        definition.setLocationUri("/ws");
-        definition.setSchema(studentsSchema);
-        return definition;
-    }
 
     @Bean
-    public XsdSchema studentsSchema() {
-        return new SimpleXsdSchema(new ClassPathResource("student.xsd"));
+    public SoapFaultMappingExceptionResolver exceptionResolver() {
+        SoapFaultMappingExceptionResolver exceptionResolver = new DetailSoapFaultDefinitionExceptionResolver();
+
+        return exceptionResolver;
     }
+
 }
